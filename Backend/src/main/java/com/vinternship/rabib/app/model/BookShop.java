@@ -19,7 +19,7 @@ public class BookShop {
 	  @Column(name="location")
 	private String location;
 
-    @ManyToMany(mappedBy="bookShop",cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(mappedBy="bookShop",cascade = { CascadeType.MERGE})
 	@JsonIgnore
 	private List<Book> book;
     @Column(name="contact_no")

@@ -1,0 +1,55 @@
+<div class="mt-4">
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+        
+    Add Book
+      
+</button>
+</div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add a new Book</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form #booksForm="ngForm" (ngSubmit)="getBookData(booksForm.value)" class="row g-3">
+                <div class="col-md-12">
+                  <label for="validationDefault01" class="form-label">Title</label>
+                  <input type="text" ngModel class="form-control" id="validationDefault01" name="title" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="validationDefault02" class="form-label">Price</label>
+                  <input type="text" ngModel class="form-control" id="validationDefault02" name="price" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="validationDefaultUsername" class="form-label">Year of publish</label>
+                  <div class="input-group">
+                    
+                    <input type="text" ngModel class="form-control" id='validationDefaultUsername' name="yearOfPublish"  aria-describedby="inputGroupPrepend2" >
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="validationDefault03" class="form-label">Gener</label>
+                  <input type="text" ngModel class="form-control" id='validationDefault03' name="genre" >
+                </div>
+                <div class="col-md-6">
+                  <label for="validationDefault04" class="form-label">Publisher</label>
+                  <input type="text" ngModel class="form-control" id="validationDefault04" name="publisher">
+                  
+                </div>
+              
+                <div class="col-12">
+                  <button class="btn btn-primary" type="submit">Submit form</button>
+                </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+        </div>
+      </div>
+    </div>
+  </div>

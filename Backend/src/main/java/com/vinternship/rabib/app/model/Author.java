@@ -22,7 +22,7 @@ public class Author {
 	@JsonIgnore
 	@ManyToMany(mappedBy="authors",cascade= {
 			
-			CascadeType.PERSIST,
+			
 			CascadeType.MERGE
 			
 	}
