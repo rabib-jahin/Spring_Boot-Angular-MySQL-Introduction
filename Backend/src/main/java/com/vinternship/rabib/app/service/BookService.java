@@ -21,8 +21,7 @@ public class BookService {
 }
  public Book updateBook(Book book,long id){
 		
-		
-		book.setBookId(id);
+	book.setBookId(id);
 		
 		
 		return repository.save(book);
