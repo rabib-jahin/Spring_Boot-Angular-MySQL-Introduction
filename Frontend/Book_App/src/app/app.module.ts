@@ -9,6 +9,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { AddBookComponent } from './Components/book/add-book/add-book.component';
 import { EditBookComponent } from './Components/book/edit-book/edit-book.component'
 import { FormsModule }   from '@angular/forms';
+import {ReactiveFormsModule} from "@angular/forms"
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,12 +17,14 @@ import { FormsModule }   from '@angular/forms';
     NavbarComponent,
     AddBookComponent,
     EditBookComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule 
+    FormsModule ,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
