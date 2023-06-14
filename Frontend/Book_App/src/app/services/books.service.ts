@@ -27,5 +27,18 @@ return this.http.delete(this.url+"/book/"+id,{ observe: 'response', responseType
 
 
 }
+getABook(id:number){
 
+  return this.http.get(this.url+"/book/"+id)
+
+}
+updateBook(bookData:any,id:number){
+
+  return this.http.put(this.url+"/books/"+id,bookData)
+
+}
+getAuthors(){
+  return this.http.get(this.url+"/authors");
+
+}
 }

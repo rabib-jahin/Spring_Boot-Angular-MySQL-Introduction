@@ -1,6 +1,6 @@
 package com.vinternship.rabib.app.model;
 
-import java.util.List;
+import java.util.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -24,9 +24,9 @@ public class Book {
 	    private String genre;
 	    private String publisher;
 	    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-	    private List<Author> authors;
+	    private Set<Author> authors=new HashSet<>();
 	    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-	    private List<BookShop> bookShop;
+	    private Set<BookShop> bookShop = new HashSet<>();
 	    
 	    // Constructors
 	    public Book() {}
@@ -39,7 +39,7 @@ public class Book {
 
 	
 	    public Book(long bookId, String title, double price, int yearOfPublish, String genre, String publisher,
-				List<Author> authors, List<BookShop> bookShop) {
+				Set<Author> authors, Set<BookShop> bookShop) {
 			super();
 			this.bookId = bookId;
 			this.title = title;
@@ -53,7 +53,7 @@ public class Book {
 
 	  
 	    public Book( String title, double price, int yearOfPublish, String genre, String publisher,
-				List<Author> authors, List<BookShop> bookShop) {
+				Set<Author> authors, Set<BookShop> bookShop) {
 			super();
 		
 			this.title = title;
@@ -77,7 +77,15 @@ public class Book {
 
 
 
-		public List<BookShop> getBookShop() {
+		
+
+
+
+
+
+
+
+		public Set<BookShop> getBookShop() {
 			return bookShop;
 		}
 
@@ -88,8 +96,30 @@ public class Book {
 
 
 
-		public void setBookShop(List<BookShop> bookShop) {
+		public void setBookShop(Set<BookShop> bookShop) {
 			this.bookShop = bookShop;
+		}
+
+
+
+
+
+
+
+
+		public void setAuthors(Set<Author> authors) {
+			this.authors = authors;
+		}
+
+
+
+
+
+
+
+
+		public Set<Author> getAuthors() {
+			return authors;
 		}
 
 
@@ -147,14 +177,6 @@ public class Book {
 	    public void setPublisher(String publisher) {
 	        this.publisher = publisher;
 	    }
-
-		public List<Author> getAuthors() {
-			return authors;
-		}
-
-		public void setAuthors(List<Author> authors) {
-			this.authors = authors;
-		}
 
 
 

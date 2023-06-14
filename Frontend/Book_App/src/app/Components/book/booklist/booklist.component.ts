@@ -11,6 +11,8 @@ export class BooklistComponent {
 bookList:any
 isLoading:boolean=false
 temp:boolean=false
+book:any
+bookAuthors:any
 constructor(private books:BooksService){
 
 
@@ -48,4 +50,12 @@ this.loadBooks();
 
 
 }
+saveData(data:any){
+
+this.book=data
+this.bookAuthors=this.book["authors"]
+console.log(this.bookAuthors)
+
+}
+
 }

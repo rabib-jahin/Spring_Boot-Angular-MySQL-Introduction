@@ -1,6 +1,6 @@
 package com.vinternship.rabib.app.service;
 
-import java.util.List;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +13,9 @@ public class BookService {
 	
 	@Autowired
 	private BookRepository repository;
+	
+
+	
     public Book saveBook(Book book){
 		
 		
@@ -27,11 +30,11 @@ public class BookService {
 		return repository.save(book);
 	}
 	
-	public List<Book> getBooks(){
+	public Set<Book> getBooks(){
 		
+		Set<Book> set = new HashSet<>(repository.findAll());
 		
-		
-		return repository.findAll();
+		return set;
 	}
 	
 public Book getBookById(long id){
@@ -40,11 +43,12 @@ public Book getBookById(long id){
 		
 		return repository.findById(id).orElse(null);
 	}
-public List<Book> getBookByTitle(String title){
+public Set<Book> getBookByTitle(String title){
 	
 	
 	
-	return repository.findByTitle(title);
+	Set<Book> set = new HashSet<>(repository.findByTitle(title));
+	return set;
 }
 
 public void delBookById(long id){

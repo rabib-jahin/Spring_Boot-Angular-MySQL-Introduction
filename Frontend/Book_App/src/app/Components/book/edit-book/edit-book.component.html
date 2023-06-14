@@ -1,1 +1,106 @@
-<p>edit-book works!</p>
+
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel2">Update the Book</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form  [formGroup]="updateBook"  (ngSubmit)="submitData()" class="row g-3">
+                <div class="col-md-12">
+                  <label for="validationDefault01" class="form-label">Title</label>
+                  <input type="text" class="form-control" id="validationDefault01"  formControlName="title" required>
+               <span  class="error" *ngIf="title?.invalid && title?.touched  ">title field is required</span>
+                </div>
+                <div class="col-md-6">
+                  <label for="validationDefault02" class="form-label">Price</label>
+                  <input type="text"  class="form-control" id="validationDefault02" formControlName="price" required>
+                  <span  class="error" *ngIf="price?.invalid && price?.touched  ">price field is required</span>
+           
+                </div>
+                <div class="col-md-6">
+                  <label for="validationDefaultUsername" class="form-label">Year of publish</label>
+                  <div class="input-group">
+                    
+                    <input type="text"  class="form-control" id='validationDefaultUsername' formControlName="yearOfPublish"  aria-describedby="inputGroupPrepend2" >
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="validationDefault03" class="form-label">Gener</label>
+                  <input type="text"  class="form-control" id='validationDefault03' formControlName="genre" >
+                </div>
+                <div class="col-md-6">
+                  <label for="validationDefault04" class="form-label">Publisher</label>
+                  <input type="text" class="form-control" id="validationDefault04" formControlName="publisher">
+                  
+                </div>
+                <div class="col-md-6" formArrayName="authors">
+                    <label for="validationDefault04" class="form-label">Author Name</label>
+                   <button style="margin-left:30px"  type="button" (click)="addNewAuthor()" class="btn btn-primary">Add </button>
+                 
+                <div *ngFor="let author of authors.controls;let i=index">
+<label>Author Name {{i+1}}</label>
+<div style="display:flex">
+<select  [formControlName]="i" class='select-option'
+    #mySelect
+    (change)='onOptionsSelected(mySelect.value)'>
+   <option class='option' 
+  
+   *ngFor='let option of auths' 
+   [value]="option.authorId"
+ 
+
+   >{{option.firstName }}</option>
+
+</select>
+
+<button type="button" style="margin-left: 30px;" (click)="delAuthor(i)" class="btn btn-danger">Delete</button>
+</div>              
+
+                </div>
+                
+                
+                </div>
+
+                <div class="col-md-12" formArrayName="bookShop">
+                  <label for="validationDefault05" class="form-label">BookShop Name</label>
+                 <button style="margin-left:30px"  type="button" (click)="addNewBookShop()" class="btn btn-primary">Add </button>
+               
+              <div *ngFor="let author of bookShop.controls;let i=index">
+<label>BookShop  {{i+1}}</label>
+<div style="display:flex">
+<select  [formControlName]="i" class='select-option'
+  #mySelect2
+  >
+>
+ <option class='option' 
+
+ *ngFor='let option of  bookshopsData' 
+ [value]="option.shopNumber"
+
+
+ >{{option.shopName}}</option>
+
+</select>
+
+<button type="button" style="margin-left: 30px;" (click)="delBookShop(i)" class="btn btn-danger">Delete</button>
+</div>              
+
+              </div>
+              
+              
+              </div>
+
+                <div class="col-12">
+                  <button class="btn btn-primary" type="submit">Update</button>
+                </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+        </div>
+      </div>
+    </div>
+  </div>

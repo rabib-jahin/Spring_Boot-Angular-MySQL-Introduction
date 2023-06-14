@@ -1,0 +1,48 @@
+
+<div class="modal fade" id="editBookShop" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel2">Update the BookShop</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form  [formGroup]="updateBookShop" (ngSubmit)="submitData()"  class="row g-3">
+                <div class="col-md-12">
+                  <label for="validationDefault01" class="form-label">Shop Name</label>
+                  <input type="text" class="form-control" id="validationDefault01"  formControlName="shopName" required>
+               <span  class="error" *ngIf="shopName?.invalid && shopName?.touched  ">shop name field is required</span>
+                </div>
+                <div class="col-md-12">
+                  <label for="validationDefault02" class="form-label">Location</label>
+                  <input type="text"  class="form-control" id="validationDefault02" formControlName="location" >
+               
+           
+                </div>
+                <div class="col-md-12">
+                  <label for="validationDefaultUsername" class="form-label">Email</label>
+                  <div class="input-group">
+                    
+                    <input type="text"  class="form-control" id='validationDefaultUsername' formControlName="email"  aria-describedby="inputGroupPrepend2" >
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <label for="validationDefault03" class="form-label">Contact No</label>
+                  <input type="text"  class="form-control" id='validationDefault03' formControlName="contactNo" >
+                </div>
+             
+
+                
+
+                <div class="col-12">
+                  <button class="btn btn-primary" type="submit">Update</button>
+                </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+        </div>
+      </div>
+    </div>
+  </div>

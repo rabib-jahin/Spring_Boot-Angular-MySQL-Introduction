@@ -1,0 +1,54 @@
+
+<div class="mt-4 mr-2" >
+<button type="button" style="margin-left:10px" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalshop" >
+        
+    Add Bookshop
+      
+</button>
+</div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalshop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add a new Bookshop</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form  [formGroup]="addBookShop" (ngSubmit)="submit()" class="row g-3">
+                <div class="col-md-12">
+                  <label for="validationDefault01" class="form-label">Shop Name</label>
+                  <input type="text" class="form-control" id="validationDefault01"  formControlName="shopName" required>
+               <span  class="error" *ngIf="shopName?.invalid && shopName?.touched  ">shopName field is required</span>
+                </div>
+                <div class="col-md-6">
+                  <label for="validationDefault02" class="form-label">Location</label>
+                  <input type="text"  class="form-control" id="validationDefault02" formControlName="location" >
+             
+                </div>
+                <div class="col-md-6">
+                  <label for="validationDefaultUsername" class="form-label">Contact No</label>
+                  <div class="input-group">
+                    
+                    <input type="text"  class="form-control" id='validationDefaultUsername' formControlName="contactNo"  aria-describedby="inputGroupPrepend2" >
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="validationDefault03" class="form-label">Email</label>
+                  <input type="text"  class="form-control" id='validationDefault03' formControlName="email" >
+                </div>
+               
+              
+                <div class="col-12">
+                  <button class="btn btn-primary" type="submit">Submit form</button>
+                </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+        </div>
+      </div>
+    </div>
+  </div>

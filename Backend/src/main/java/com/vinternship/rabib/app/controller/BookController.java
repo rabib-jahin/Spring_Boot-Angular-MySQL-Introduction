@@ -1,6 +1,6 @@
 package com.vinternship.rabib.app.controller;
 
-import java.util.List;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -40,7 +40,7 @@ public class BookController {
 	}
 	
 	@GetMapping("/api/books")
-	public List<Book> findAllBooks(){
+	public Set<Book> findAllBooks(){
 		
 		
 		return service.getBooks();
@@ -57,7 +57,7 @@ public class BookController {
 		
 	}
 	@GetMapping("/api/books/{title}")
-	public List<Book> findBookByTitle(@PathVariable String title){
+	public Set<Book> findBookByTitle(@PathVariable String title){
 		
 		return service.getBookByTitle(title);
 		

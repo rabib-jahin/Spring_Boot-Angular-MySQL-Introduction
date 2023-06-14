@@ -1,7 +1,7 @@
 package com.vinternship.rabib.app.model;
 
 
-import java.util.List;
+import java.util.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -27,14 +27,14 @@ public class Author {
 			
 	}
 	)
-    private List<Book> books;
+    private Set<Book> books=new HashSet<>();
 	public Author() {}
 	
 	
 
 
 
-	public Author(long authorId, String firstName, String lastName, String language, List<Book> books) {
+	public Author(long authorId, String firstName, String lastName, String language, Set<Book> books) {
 		super();
 		this.authorId = authorId;
 		this.firstName = firstName;
@@ -45,7 +45,7 @@ public class Author {
 
 
 
-	public Author( String firstName, String lastName, String language, List<Book> books) {
+	public Author( String firstName, String lastName, String language, Set<Book> books) {
 		super();
 		
 		this.firstName = firstName;
@@ -106,7 +106,13 @@ public class Author {
 
 
 
-	public List<Book> getBooks() {
+	
+
+
+
+
+
+	public Set<Book> getBooks() {
 		return books;
 	}
 
@@ -114,7 +120,7 @@ public class Author {
 
 
 
-	public void setBooks(List<Book> books) {
+	public void setBooks(Set<Book> books) {
 		this.books = books;
 	}
 

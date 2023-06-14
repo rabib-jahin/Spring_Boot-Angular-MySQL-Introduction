@@ -1,6 +1,6 @@
 package com.vinternship.rabib.app.model;
 
-import java.util.List;
+import java.util.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -21,14 +21,14 @@ public class BookShop {
 
     @ManyToMany(mappedBy="bookShop",cascade = { CascadeType.MERGE})
 	@JsonIgnore
-	private List<Book> book;
+	private Set<Book> book=new HashSet<>();
     @Column(name="contact_no")
 	private String contactNo;
 	private String email;
 	
 	public BookShop() {}
 	
-	public BookShop(long shopNumber, String shopName, String location, List<Book> book,
+	public BookShop(long shopNumber, String shopName, String location, Set<Book> book,
 			String contactNo, String email) {
 		super();
 		this.shopNumber = shopNumber;
@@ -38,7 +38,7 @@ public class BookShop {
 		this.contactNo = contactNo;
 		this.email = email;
 	}
-	public BookShop( String shopName, String location, List<Book> book,
+	public BookShop( String shopName, String location,Set<Book> book,
 			String contactNo, String email) {
 		super();
 	
@@ -50,13 +50,13 @@ public class BookShop {
 	}
 	
 	
-	
-	
-	public List<Book> getBook() {
+
+
+	public Set<Book> getBook() {
 		return book;
 	}
 
-	public void setBook(List<Book> book) {
+	public void setBook(Set<Book> book) {
 		this.book = book;
 	}
 

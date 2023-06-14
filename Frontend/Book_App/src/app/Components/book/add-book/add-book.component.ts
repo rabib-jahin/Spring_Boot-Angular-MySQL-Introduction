@@ -1,12 +1,27 @@
-import { Component } from '@angular/core';
+import { Component ,OnInit} from '@angular/core';
 import {BooksService} from "../../../services/books.service"
+import {FormGroup,FormControl,Validators} from "@angular/forms"
 @Component({
   selector: 'app-add-book',
   templateUrl: './add-book.component.html',
   styleUrls: ['./add-book.component.css']
 })
-export class AddBookComponent {
- 
+export class AddBookComponent{
+
+
+  
+  addBook=new FormGroup({
+
+title: new FormControl('',Validators.required),
+price:new FormControl('',Validators.required),
+yearOfPublish:new FormControl(2023),
+genre:new FormControl(''),
+publisher:new FormControl(''),
+authors:new FormControl([]),
+bookShop:new FormControl([])
+
+
+  })
 
    temp:any
 
@@ -15,40 +30,40 @@ export class AddBookComponent {
   constructor(private books:BooksService){
 
   }
-
-
-
-getBookData(bookData:{[k: string]: any}){
-
-
-
-if(bookData['title']===''){
+ 
+  getBookData(){
+console.log(this.addBook.value)
+if(this.addBook.value.title===''){
   window.alert("Title can't be empty")
   return ;
 }
-if(bookData['price']===''){
+if(this.addBook.value.price===''){
   window.alert("Price can't be empty")
   return ;
 }
-if(isNaN(Number(bookData['price']))){
+if(isNaN(Number(this.addBook.value.price))){
 
-  window.alert("Price smust be a number")
+  window.alert("Price must be a number")
   return ;
 }
-bookData['price']=Number(bookData['price']);
-if(isNaN(Number(bookData['yearOfPublish']))){
+Number(this.addBook.value.price);
+if(isNaN(Number(this.addBook.value.yearOfPublish))){
 
-  window.alert("Year smust be a number")
+  window.alert("Year must be a number")
   return ;
 }
-bookData['yearOfPublish']=Number(bookData['yearOfPublish']);
-console.log(bookData)
-this.books.addBook(bookData).subscribe(res=>{
+this.temp=this.addBook.value;
+this.temp['price']=Number(this.addBook.value.price);
+
+console.log(this.temp)
+this.books.addBook(this.temp).subscribe(res=>{
 console.log(res);
 window.alert("book successfully added")
 })
 
-
   }
+get title(){return this.addBook.get('title')}
+get price(){return this.addBook.get('price')}
+
 
 }
